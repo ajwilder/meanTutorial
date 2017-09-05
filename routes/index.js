@@ -3,7 +3,7 @@ var router = express.Router();
 var passport = require('passport');
 
 var jwt = require('express-jwt');
-var auth = jwt({secret: 'SECRET', UserProperty: 'payload'});
+
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -14,6 +14,8 @@ var mongoose = require('mongoose');
 var Post = mongoose.model('Post');
 var Comment = mongoose.model('Comment');
 var User = mongoose.model('User');
+var auth = jwt({secret: 'SECRET', UserProperty: 'payload'});
+
 router.get('/posts', function(req, res, next) {
   Post.find(function(err, posts) {
     if(err){ return next(err); }
